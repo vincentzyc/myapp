@@ -1,75 +1,53 @@
-import React from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Animation from "./components/animation-router";
+import Logo from "./img/logo.svg";
 
-// Each logical "route" has two components, one for
-// the sidebar and one for the main area. We want to
-// render both of them in different places when the
-// path matches the current URL.
 const routes = [
-  { path: '/',
-    exact: true,
-    sidebar: () => <div>home!</div>,
-    main: () => <h2>Home</h2>
-  },
-  { path: '/bubblegum',
-    sidebar: () => <div>bubblegum!</div>,
-    main: () => <h2>Bubblegum</h2>
-  },
-  { path: '/shoelaces',
-    sidebar: () => <div>shoelaces!</div>,
-    main: () => <h2>Shoelaces</h2>
-  }
-]
+    {
+        path: "/",
+        exact: true,
+        main: () => <img src={Logo} alt="logo" />
+    },
+    {
+        path: "/animation",
+        main: () => <Animation />
+    },
+    {
+        path: "/shoelaces",
+        main: () => <h2>Shoelaces</h2>
+    }
+];
 
+const tab_fixed = {
+    width:'100%',
+    position: "fixed",
+    left: "0",
+    bottom: "0"
+};
 const SidebarExample = () => (
-  <Router>
-    <div style={{ display: 'flex' }}>
-      <div style={{
-        padding: '10px',
-        width: '40%',
-        background: '#f0f0f0'
-      }}>
-        <ul style={{ listStyleType: 'none', padding: 0 }}>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/bubblegum">Bubblegum</Link></li>
-          <li><Link to="/shoelaces">Shoelaces</Link></li>
-        </ul>
+    <Router>
+        <div>
+            <ul className="flex bg999 text-center" style={tab_fixed}>
+                <li className="flex-auto pd20">
+                    <Link to="/">Home</Link>
+                </li>
+                <li className="flex-auto pd20">
+                    <Link to="/Animation">Animation</Link>
+                </li>
+                <li className="flex-auto pd20">
+                    <Link to="/shoelaces">Shoelaces</Link>
+                </li>
+            </ul>
+            <div>{routes.map((route, index) => <Route key={index} path={route.path} exact={route.exact} component={route.main} />)}</div>
+        </div>
+    </Router>
+);
 
-        {routes.map((route, index) => (
-          // You can render a <Route> in as many places
-          // as you want in your app. It will render along
-          // with any other <Route>s that also match the URL.
-          // So, a sidebar or breadcrumbs or anything else
-          // that requires you to render multiple things
-          // in multiple places at the same URL is nothing
-          // more than multiple <Route>s.
-          <Route
-            key={index}
-            path={route.path}
-            exact={route.exact}
-            component={route.sidebar}
-          />
-        ))}
-      </div>
+class App extends React.Component {
+    render() {
+        return <SidebarExample />;
+    }
+}
 
-      <div style={{ flex: 1, padding: '10px' }}>
-        {routes.map((route, index) => (
-          // Render more <Route>s with the same paths as
-          // above, but different components this time.
-          <Route
-            key={index}
-            path={route.path}
-            exact={route.exact}
-            component={route.main}
-          />
-        ))}
-      </div>
-    </div>
-  </Router>
-)
-
-export default SidebarExample
+export default App;
