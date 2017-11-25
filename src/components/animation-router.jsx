@@ -7,7 +7,7 @@ import '../css/App.css';
 const Fade = ({ children, ...props }) => (
   <CSSTransition
     {...props}
-    timeout={800}
+    timeout={500}
     classNames="fade"
   >
     {children}

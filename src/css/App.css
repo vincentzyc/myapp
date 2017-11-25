@@ -1,37 +1,63 @@
 .fade-enter {
     opacity: 0.01;
-  }
-  
-  .fade-enter.fade-enter-active {
+}
+
+.fade-enter.fade-enter-active {
     opacity: 1;
-    transition: opacity 1000ms ease-in;
-  }
-  
-  .fade-exit {
+    transition: opacity 500ms ease-in;
+}
+
+.fade-exit {
     opacity: 1;
-  }
-  
-  .fade-exit.fade-exit-active {
+}
+
+.fade-exit.fade-exit-active {
     opacity: 0.01;
     transition: opacity 800ms ease-in;
+}
+
+.example-enter {
+    opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+
+.example-exit {
+    opacity: 1;
+}
+
+.example-exit.example-exit-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
+
+.greeting {
+    padding: 20px;
+    background-color: #ccc;
+    width: 200px;
+    margin: auto;
+    text-align: center;
+    border-radius: 4px;
   }
-  
-  
-  /**--- example styles ---**/
-  .container {
+
+/**--- example styles ---**/
+.container {
     padding: 20px;
     border: 1px solid #ccc;
     width: 200px;
     margin: auto;
     border-radius: 4px;
-  }
-  
-  .todo-list > * {
+}
+
+.todo-list > * {
     margin: 5px 0;
     padding: 5px 0;
-    border-bottom:  1px solid #ccc;
-  }
-  
-  .container > button {
+    border-bottom: 1px solid #ccc;
+}
+
+.container > button {
     margin-top: 20px;
-  }
+}

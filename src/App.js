@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import Animation from "./components/animation-router";
+import AnimationV1 from "./components/animation-router-v1";
 import Logo from "./img/logo.svg";
 
 const routes = [
@@ -15,12 +17,12 @@ const routes = [
     },
     {
         path: "/shoelaces",
-        main: () => <h2>Shoelaces</h2>
+        main: () => <AnimationV1 />
     }
 ];
 
 const tab_fixed = {
-    width:'100%',
+    width: "100%",
     position: "fixed",
     left: "0",
     bottom: "0"
@@ -39,7 +41,15 @@ const SidebarExample = () => (
                     <Link to="/shoelaces">Shoelaces</Link>
                 </li>
             </ul>
-            <div>{routes.map((route, index) => <Route key={index} path={route.path} exact={route.exact} component={route.main} />)}</div>
+            <div>
+                <TransitionGroup className="todo-list">
+                    {routes.map((route, index) => (
+                        <CSSTransition timeout={800} classNames="fade" key={index}>
+                            <Route key={index} path={route.path} exact={route.exact} component={route.main} />
+                        </CSSTransition>
+                    ))}
+                </TransitionGroup>
+            </div>
         </div>
     </Router>
 );
