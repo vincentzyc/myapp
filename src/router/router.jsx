@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 
-const Home = (location, cb) => {
-    require.ensure([],require => {
-            cb(null, require("../components/main/home").default);
-        },"chooseProducts");
-};
+import Home from '../components/main/home';
+// const Home = (location, cb) => {
+//     require.ensure([],require => {
+//             cb(null, require("../components/main/home").default);
+//         },"chooseProducts");
+// };
 const Roster = (location, cb) => {
     require.ensure([],require => {
             cb(null, require("../components/main/roster").default);
@@ -21,7 +22,7 @@ class RouteConfig extends Component {
     render() {
         return (
             <Switch>
-                <Route exact path="/" getComponent={Home} />
+                <Route exact path="/" component={Home} />
                 <Route path="/roster" getComponent={Roster} />
                 <Route path="/todolist" getComponent={Todolist} />
             </Switch>

@@ -9,7 +9,9 @@ class App extends Component {
             <BrowserRouter>
                 <div>
                     <Header />
-                    <RouteConfig />
+                    <div className="pd50">
+                        <RouteConfig />
+                    </div>
                     <Footer />
                 </div>
             </BrowserRouter>
