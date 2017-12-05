@@ -41,23 +41,35 @@
     margin: auto;
     text-align: center;
     border-radius: 4px;
-  }
-
-/**--- example styles ---**/
-.container {
-    padding: 20px;
-    border: 1px solid #ccc;
-    width: 200px;
-    margin: auto;
-    border-radius: 4px;
 }
-
-.todo-list > * {
-    margin: 5px 0;
-    padding: 5px 0;
-    border-bottom: 1px solid #ccc;
+.backicon{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    padding: 15px 20px;
+    
+} 
+.header_fixed{
+    z-index: 999;
+    position:fixed;
+    text-align: center;
+    background-color: #db403f;
+    left:0;
+    top :0;
+    right :0;
+    width:100%;
+    padding: 0 50px;
+    line-height:50px
 }
-
-.container > button {
-    margin-top: 20px;
+.bottom_fixed{
+    z-index: 999;
+    position:fixed;
+    background-color: #fff;
+    left:0;
+    bottom :0;
+    right :0;
+    width:100%;
+    line-height:50px
 }
