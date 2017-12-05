@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import api from "../../../js/api";
+import api from "../../common/api";
 
 class Home extends Component {
     constructor(props) {
@@ -31,7 +31,7 @@ class Home extends Component {
     render() {
         return (
             <div className="mg20">
-                <img src={require("../../../img/logo.svg")} alt="logo" onClick={this.clickLogo}/>
+                <img src={require("../../common/img/logo.svg")} alt="logo" onClick={this.clickLogo}/>
                 <h1 className="mg-b20">验证是否为移动号码</h1>
                 <input type="tel" maxLength="11" value={this.state.value} onChange={this.handleChange} />
                 <h3 className="mg-t20 mg-b20">

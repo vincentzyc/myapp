@@ -15,7 +15,7 @@ class Header extends Component {
     render() {
         return (
             <header className="header_fixed">
-                <img src={require("../../img/back.png")} alt="back" className="backicon" onClick={back}/>
+                <img src={require("../common/img/back.png")} alt="back" className="backicon" onClick={back}/>
                 <h3 className="cfff">React</h3>
             </header>
         );
