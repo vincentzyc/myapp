@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-
 const back = () => {
     window.history.back();
 };
+
 class Header extends Component {
     constructor(props) {
         super(props);
-
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -15,8 +14,8 @@ class Header extends Component {
     render() {
         return (
             <header className="header_fixed">
-                <img src={require("../common/img/back.png")} alt="back" className="backicon" onClick={back}/>
-                <h3 className="cfff">React</h3>
+                <img src={require("../common/img/back.png")} alt="back" className="backicon" onClick={back} style={this.props.location.pathname==='/'?{display:'none'}:{}}/>
+                <h3 className="cfff">Vincent</h3>
             </header>
         );
     }
