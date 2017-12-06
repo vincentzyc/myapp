@@ -1,39 +1,8 @@
-.fade-enter {
-    opacity: 0.01;
+/* reset ant design mobile style */
+.am-navbar {
+    background-color: #db403f;
 }
-
-.fade-enter.fade-enter-active {
-    opacity: 1;
-    transition: opacity 500ms ease-in;
-}
-
-.fade-exit {
-    opacity: 1;
-}
-
-.fade-exit.fade-exit-active {
-    opacity: 0.01;
-    transition: opacity 800ms ease-in;
-}
-
-.example-enter {
-    opacity: 0.01;
-}
-
-.example-enter.example-enter-active {
-    opacity: 1;
-    transition: opacity 500ms ease-in;
-}
-
-.example-exit {
-    opacity: 1;
-}
-
-.example-exit.example-exit-active {
-    opacity: 0.01;
-    transition: opacity 300ms ease-in;
-}
-
+/* reset ant design mobile style end*/
 .greeting {
     padding: 20px;
     background-color: #ccc;
@@ -60,7 +29,6 @@
     top :0;
     right :0;
     width:100%;
-    padding: 0 50px;
     line-height:50px
 }
 .bottom_fixed{
@@ -71,7 +39,8 @@
     bottom :0;
     right :0;
     width:100%;
-    line-height:50px
+    border-top: 1px solid #eee;
+    line-height:49px
 }
 .pd50{
     padding: 50px 0;
