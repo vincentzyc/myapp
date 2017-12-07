@@ -40,10 +40,10 @@ class Home extends Component {
                     }}
                 />
                 <Carousel autoplay infinite autoplayInterval={2000} selectedIndex={this.state.selectedIndex}>
-                    {this.state.allData.funcviewItem.length > 0
-                        ? this.state.allData.funcviewItem.map((item, index) => {
+                    {this.state.allData.headbannerItem.length > 0
+                        ? this.state.allData.headbannerItem.map((item, index) => {
                               return (
-                                  <a key={index} href={item.linkUrl}>
+                                  <a key={index} href={item.linkUrl} style={{ display: 'inline-block', width: '100%', height: "200px" }}>
                                       <img
                                           src={item.logo}
                                           alt={item.tagName}
@@ -54,7 +54,7 @@ class Home extends Component {
                                                 this.setState({ selectedIndex: 0 });
                                               }, 0);
                                           }}
-                                          style={{ width: "100%"}}
+                                          style={{ width: "100%",height:'200px'}}
                                       />
                                   </a>
                               );
