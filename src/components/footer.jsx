@@ -27,6 +27,9 @@ class Footer extends Component {
                     <NavLink className="flex-auto" to="/todolist" activeStyle={active}>
                         Todolist
                     </NavLink>
+                    <NavLink className="flex-auto" to="/me" activeStyle={active}>
+                        Me
+                    </NavLink>
                 </nav>
             </footer>
         );

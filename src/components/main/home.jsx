@@ -1,53 +1,68 @@
 import React, { Component } from "react";
-import { Button,InputItem } from "antd-mobile";
+import { ActivityIndicator, Grid, Carousel } from "antd-mobile";
 import api from "../../common/api";
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: "",
-            result: ""
+            pageLoading: true,
+            gridData: [],
+            selectedIndex:1,
+            allData: { headbannerItem: [], funcviewItem: [] }
         };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleClick = this.handleClick.bind(this);
     }
-    handleChange(value) {
-        this.setState({ result: "" });
-        this.setState({ value: value });
-    }
-    handleClick() {
-        let data = {};
-        data.param = `{phoneNo:${this.state.value.replace(/\s+/g,"")}}`;
-        api.jqPost("http://isp.gzjunbo.net/integeration/getPackages", data, res => {
-            console.log(res);
-            res.code === "0" ? this.setState({ result: "是移动号码" }) : this.setState({ result: "非移动号码" });
-        });
-    }
-    clickLogo(){
+    componentWillMount() {
+        let gridData = [];
         api.vkcPost("supermarketloan/homepage/allviews", { param: {} }, res => {
             console.log(res);
+            res.funcviewItem.forEach(v => {
+                gridData.push({
+                    icon: v.logo,
+                    text: v.tagName
+                });
+            });
+            this.setState({ gridData: gridData });
+            this.setState({ pageLoading: false });
+            this.setState({ allData: res });
         });
     }
+
     render() {
         return (
-            <div className="mg20">
-                <img src={require("../../common/img/logo.svg")} alt="logo" onClick={this.clickLogo}/>
-                <h1 className="mg-b20">验证是否为移动号码</h1>
-                <InputItem
-            type="phone"
-            value={this.state.value}
-            onChange={this.handleChange}
-            placeholder="188 2622 9916"
-          >手机号码</InputItem>
-                <h3 className="mg-t20 mg-b20 flex align-middle">
-                    输入号码：{this.state.value}
-                    <Button className="mg-l20" type="warning" inline size="small" onClick={this.handleClick}>确定</Button>
-                    {/* <button className="mg-l15 pd5" onClick={this.handleClick}>
-                        确定
-                    </button> */}
-                </h3>
-                <p>验证结果：{this.state.result}</p>
+            <div>
+                <ActivityIndicator toast animating={this.state.pageLoading} className="pageloading" />
+                <img
+                    src={require("../../common/img/logo.svg")}
+                    alt="logo"
+                    onClick={() => {
+                        this.props.history.push("/me");
+                    }}
+                />
+                <Carousel autoplay infinite autoplayInterval={2000} selectedIndex={this.state.selectedIndex}>
+                    {this.state.allData.funcviewItem.length > 0
+                        ? this.state.allData.funcviewItem.map((item, index) => {
+                              return (
+                                  <a key={index} href={item.linkUrl}>
+                                      <img
+                                          src={item.logo}
+                                          alt={item.tagName}
+                                          onLoad={() => {
+                                              window.dispatchEvent(new Event("resize"));
+                                              setTimeout(() => {
+                                                //   暂时解决首次加载时不轮播bug
+                                                this.setState({ selectedIndex: 0 });
+                                              }, 0);
+                                          }}
+                                          style={{ width: "100%"}}
+                                      />
+                                  </a>
+                              );
+                          })
+                        : ""}
+                </Carousel>
+
+                <Grid data={this.state.gridData} columnNum={4} />
             </div>
         );
     }
