@@ -11,7 +11,7 @@ class App extends Component {
                 <div className="pd50">
                     <Route path="/" component={Header} />
                     <RouterConfig />
-                    <Footer />
+                    <Route path="/" component={Footer} />
                 </div>
             </BrowserRouter>
         );
